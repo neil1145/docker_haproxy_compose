@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx_1:
+    container_name: nginx_server1
+    build: ../nginx/app1
+    expose:
+      - 80
+
+  nginx_2:
+    container_name: nginx_server2
+    build: ../nginx/app2
+    expose:
+      - 80
+
+  haproxy_lb:
+    build: .
+    ports:
+      - 8000:80
+    expose:
+      - 80
